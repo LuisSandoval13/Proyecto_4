@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolución de la Tecnología</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="theme-toggle" aria-label="Cambiar tema">
+            🌙
+        </button>
+    </div>
+
+    <header>
+        <section class="changelog-container">
+            <h1>Evolución de la Tecnología</h1>
+
+            <div class="timeline">
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">1950 - 1960</div>
+                    <div class="changelog-content">
+                        <h2>Primera Generación de Computadoras</h2>
+                        <ul>
+                            <li>Usaban tubos al vacío y ocupaban habitaciones enteras.</li>
+                            <li>Se utilizaban principalmente para cálculos científicos.</li>
+                            <li>Ejemplo famoso: la computadora ENIAC.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">1960 - 1970</div>
+                    <div class="changelog-content">
+                        <h2>Segunda Generación: Transistores</h2>
+                        <ul>
+                            <li>Los transistores reemplazaron los tubos al vacío, haciendo los equipos más pequeños.
+                            </li>
+                            <li>Las computadoras se volvieron más rápidas y confiables.</li>
+                            <li>Comienza el uso comercial de las computadoras.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">1970 - 1980</div>
+                    <div class="changelog-content">
+                        <h2>Tercera Generación: Circuitos Integrados</h2>
+                        <ul>
+                            <li>Los circuitos integrados permitieron construir computadoras personales.</li>
+                            <li>Surgen empresas como Intel y Microsoft.</li>
+                            <li>Se populariza el término “microprocesador”.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">1980 - 2000</div>
+                    <div class="changelog-content">
+                        <h2>Cuarta Generación: Computadoras Personales</h2>
+                        <ul>
+                            <li>Los equipos se vuelven comunes en oficinas y hogares.</li>
+                            <li>Se crea Internet y la World Wide Web.</li>
+                            <li>Se popularizan los sistemas operativos gráficos (Windows, Mac OS).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">2000 - 2020</div>
+                    <div class="changelog-content">
+                        <h2>Quinta Generación: Móviles e Inteligencia Artificial</h2>
+                        <ul>
+                            <li>Los teléfonos inteligentes se vuelven parte del día a día.</li>
+                            <li>Surge el almacenamiento en la nube y las redes sociales.</li>
+                            <li>La inteligencia artificial comienza a transformar la educación y el trabajo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-entry">
+                    <div class="changelog-date">2020 - Hoy</div>
+                    <div class="changelog-content">
+                        <h2>Era Moderna: IA y Automatización</h2>
+                        <ul>
+                            <li>La inteligencia artificial puede generar texto, imágenes y código.</li>
+                            <li>La robótica y el aprendizaje automático avanzan rápidamente.</li>
+                            <li>Nos acercamos a una sociedad digital totalmente conectada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </header>
+
+    <script>
+        // ======== CAMBIO DE TEMA ========
+        const themeButton = document.getElementById("theme-toggle");
+        themeButton.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            themeButton.textContent = document.body.classList.contains("dark-theme")
+                ? "☀️"
+                : "🌙";
+        });
+
+        // ======== ANIMACIÓN AL HACER SCROLL ========
+        const entries = document.querySelectorAll(".changelog-entry");
+        const observer = new IntersectionObserver(
+            (observed) => {
+                observed.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        entries.forEach((entry) => observer.observe(entry));
+    </script>
+</body>
+
+</html>

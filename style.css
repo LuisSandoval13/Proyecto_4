@@ -1,0 +1,129 @@
+/* ======== ESTILOS BASE ======== */
+:root {
+    --color-bg: #f8f9fa;
+    --color-text: #222;
+    --color-primary: #4a90e2;
+    --color-card: #ffffff;
+    --color-border: #ddd;
+}
+
+body.dark-theme {
+    --color-bg: #121212;
+    --color-text: #f5f5f5;
+    --color-primary: #bb86fc;
+    --color-card: #1e1e1e;
+    --color-border: #333;
+}
+
+body {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+li {
+  font-size: 1.3rem; /* puedes poner 14px, 18px, etc. */
+}
+
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+/* ======== BOTÓN DE TEMA ======== */
+.theme-toggle {
+    text-align: right;
+    padding: 1.5rem;
+}
+
+#theme-toggle {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.05);
+    background-color: #357abd;
+}
+/* ======== LÍNEA DE TIEMPO ======== */
+.timeline {
+    position: relative;
+    margin: 3rem auto;
+    padding: 2rem 0;
+    width: 95%;
+    /* 🔹 Más ancho general */
+    max-width: 900px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: var(--color-border);
+}
+
+.changelog-entry {
+    position: relative;
+    width: 65%;
+    padding: 1.5rem 2rem;
+    background: var(--color-card);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin: 1.5rem 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+
+.changelog-entry.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.changelog-entry:nth-child(odd) {
+    left: -25%;
+}
+
+.changelog-entry:nth-child(even) {
+    left: 53%;
+}
+
+.changelog-date {
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.changelog-content h2 {
+    margin: 0 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 8px;
+    }
+
+    .changelog-entry {
+        width: calc(100% - 30px);
+        left: 20px !important;
+    }
+}
